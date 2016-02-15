@@ -38,7 +38,7 @@ session_start();
 					</tr>
 					
 					<tr>
-						<td><img src="images/thibault_chastel.jpg" alt="Thibault CHASTEL"/>      </td>
+						<td><img src="images/thibault.jpg" alt="Thibault CHASTEL"/>      </td>
 						<td>Thibault CHASTEL</td>
 						<td>   </td>
 						<td>Co-founder of YourGroups</td>
