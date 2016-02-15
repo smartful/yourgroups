@@ -1,0 +1,414 @@
+-- phpMyAdmin SQL Dump
+-- version 3.2.0.1
+-- http://www.phpmyadmin.net
+--
+-- Serveur: localhost
+-- Généré le : Lun 29 Novembre 2010 à 18:00
+-- Version du serveur: 5.1.36
+-- Version de PHP: 5.3.0
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Base de données: `yourgroups`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `agora`
+--
+
+CREATE TABLE IF NOT EXISTS `agora` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `prenom` varchar(255) NOT NULL,
+  `nom` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `date_envoi` datetime NOT NULL,
+  `id_group` int(11) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Contenu de la table `agora`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `country`
+--
+
+CREATE TABLE IF NOT EXISTS `country` (
+  `Name` varchar(35) NOT NULL,
+  `Code` varchar(4) NOT NULL DEFAULT '',
+  `Capital` varchar(35) DEFAULT NULL,
+  `Province` varchar(35) DEFAULT NULL,
+  `Area` float DEFAULT NULL,
+  `Population` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Code`),
+  UNIQUE KEY `Name` (`Name`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `country`
+--
+
+INSERT INTO `country` (`Name`, `Code`, `Capital`, `Province`, `Area`, `Population`) VALUES
+('Albania', 'AL', 'Tirane', 'Albania', 28750, 3249136),
+('Greece', 'GR', 'Athens', 'Attiki', 131940, 10538594),
+('Macedonia', 'MK', 'Skopje', 'Macedonia', 25333, 2104035),
+('Serbia', 'SRB', 'Belgrade', 'Serbia', 77474, 7379339),
+('Montenegro', 'MNE', 'Podgorica', 'Montenegro', 14026, 672180),
+('Kosovo', 'KOS', 'Pristina', 'Kosovo', 10887, 1804838),
+('Andorra', 'AND', 'Andorra la Vella', 'Andorra', 450, 72766),
+('France', 'F', 'Paris', 'Ile de France', 547030, 58317450),
+('Spain', 'E', 'Madrid', 'Madrid', 504750, 39181114),
+('Austria', 'A', 'Vienna', 'Vienna', 83850, 8023244),
+('Czech Republic', 'CZ', 'Prague', 'Praha', 78703, 10321120),
+('Germany', 'D', 'Berlin', 'Berlin', 356910, 83536115),
+('Hungary', 'H', 'Budapest', 'Budapest (munic.)', 93030, 10002541),
+('Italy', 'I', 'Rome', 'Lazio', 301230, 57460274),
+('Liechtenstein', 'FL', 'Vaduz', 'Liechtenstein', 160, 31122),
+('Slovakia', 'SK', 'Bratislava', 'Slovakia', 48845, 5374362),
+('Slovenia', 'SLO', 'Ljubljana', 'Slovenia', 20256, 1951443),
+('Switzerland', 'CH', 'Bern', 'BE', 41290, 7207060),
+('Belarus', 'BY', 'Minsk', 'Belarus', 207600, 10415973),
+('Latvia', 'LV', 'Riga', 'Latvia', 64100, 2468982),
+('Lithuania', 'LT', 'Vilnius', 'Lithuania', 65200, 3646041),
+('Poland', 'PL', 'Warsaw', 'Warszwaskie', 312683, 38642565),
+('Ukraine', 'UA', 'Kiev', 'Kyyivska', 603700, 50864009),
+('Russia', 'R', 'Moscow', 'Moskva', 1.70752e+007, 148178487),
+('Belgium', 'B', 'Brussels', 'Brabant', 30510, 10170241),
+('Luxembourg', 'L', 'Luxembourg', 'Luxembourg', 2586, 415870),
+('Netherlands', 'NL', 'Amsterdam', 'Noord Holland', 37330, 15568034),
+('Bosnia and Herzegovina', 'BIH', 'Sarajevo', 'Bosnia and Herzegovina', 51233, 2656240),
+('Croatia', 'HR', 'Zagreb', 'Croatia', 56538, 5004112),
+('Bulgaria', 'BG', 'Sofia', 'Bulgaria', 110910, 8612757),
+('Romania', 'RO', 'Bucharest', 'Bucuresti', 237500, 21657162),
+('Turkey', 'TR', 'Ankara', 'Ankara', 780580, 62484478),
+('Denmark', 'DK', 'Copenhagen', 'Denmark', 43070, 5249632),
+('Estonia', 'EW', 'Tallinn', 'Estonia', 45100, 1459428),
+('Faroe Islands', 'FARX', 'Torshavn', 'Faroe Islands', 1400, 43857),
+('Finland', 'SF', 'Helsinki', 'Uusimaa', 337030, 5105230),
+('Norway', 'N', 'Oslo', 'Oslo', 324220, 4383807),
+('Sweden', 'S', 'Stockholm', 'Stockholm', 449964, 8900954),
+('Monaco', 'MC', 'Monaco', 'Monaco', 1.9, 31719),
+('Gibraltar', 'GBZ', 'Gibraltar', 'Gibraltar', 6.5, 28765),
+('Guernsey', 'GBG', 'Saint Peter Port', 'Guernsey', 194, 62920),
+('Holy See', 'V', 'Vatican City', 'Holy See', 0.44, 840),
+('Iceland', 'IS', 'Reykjavik', 'Iceland', 103000, 270292),
+('Ireland', 'IRL', 'Dublin', 'Ireland', 70280, 3566833),
+('San Marino', 'RSM', 'San Marino', 'San Marino', 60, 24521),
+('Jersey', 'GBJ', 'Saint Helier', 'Jersey', 117, 87848),
+('Malta', 'M', 'Valletta', 'Malta', 320, 375576),
+('Man', 'GBM', 'Douglas', 'Man', 588, 73837),
+('Moldova', 'MD', 'Chisinau', 'Moldova', 33700, 4463847),
+('Portugal', 'P', 'Lisbon', 'Lisbon', 92080, 9865114),
+('Svalbard', 'SVAX', 'Longyearbyen', 'Svalbard', 62049, 2116),
+('United Kingdom', 'GB', 'London', 'Greater London', 244820, 58489975),
+('Afghanistan', 'AFG', 'Kabul', 'Afghanistan', 647500, 22664136),
+('China', 'TJ', 'Beijing', 'Beijing (munic.)', 9.59696e+006, 1210004956),
+('Iran', 'IR', 'Tehran', 'Tehran', 1.648e+006, 66094264),
+('Pakistan', 'PK', 'Islamabad', 'Pakistan', 803940, 129275660),
+('Tajikistan', 'TAD', 'Dushanbe', 'Dushanbe (munic.)', 143100, 5916373),
+('Turkmenistan', 'TM', 'Ashgabat', 'Ahal', 488100, 4149283),
+('Uzbekistan', 'UZB', 'Tashkent', 'Toshkent', 447400, 23418381),
+('Armenia', 'ARM', 'Yerevan', 'Armenia', 29800, 3463574),
+('Georgia', 'GE', 'Tbilisi', 'Georgia', 69700, 5219810),
+('Azerbaijan', 'AZ', 'Baku', 'Azerbaijan', 86600, 7676953),
+('Bahrain', 'BRN', 'Manama', 'Bahrain', 620, 590042),
+('Bangladesh', 'BD', 'Dhaka', 'Bangladesh', 144000, 123062800),
+('Myanmar', 'MYA', 'Rangoon', 'Yangon', 678500, 45975625),
+('India', 'IND', 'New Delhi', 'Delhi', 3.28759e+006, 952107694),
+('Bhutan', 'BHT', 'Thimphu', 'Bhutan', 47000, 1822625),
+('Brunei', 'BRU', 'Bandar Seri Begawan', 'Brunei', 5770, 299939),
+('Malaysia', 'MAL', 'Kuala Lumpur', 'Fed. Terr. of Kuala Lumpur', 329750, 19962893),
+('Laos', 'LAO', 'Vientiane', 'Laos', 236800, 4975772),
+('Thailand', 'THA', 'Bangkok', 'Thailand', 514000, 58851357),
+('Cambodia', 'K', 'Phnom Penh', 'Cambodia', 181040, 10861218),
+('Vietnam', 'VN', 'Hanoi', 'Vietnam', 329560, 73976973),
+('Kazakstan', 'KAZ', 'Almaty', 'Almaty (munic.)', 2.7173e+006, 16916463),
+('North Korea', 'NOK', 'Pyongyang', 'North Korea', 120540, 23904124),
+('Kyrgyzstan', 'KGZ', 'Bishkek', 'Kyrgyzstan', 198500, 4529648),
+('Hong Kong', 'HONX', 'Hong Kong', 'Hong Kong', 1092, 7055071),
+('Macau', 'MACX', 'Macau', 'Macau', 16, 496837),
+('Mongolia', 'MNG', 'Ulaanbaatar', 'Mongolia', 1.565e+006, 2496617),
+('Nepal', 'NEP', 'Kathmandu', 'Nepal', 140800, 22094033),
+('Christmas Island', 'XMAS', 'Flying Fish Cove', 'Christmas Island', 135, 1402),
+('Cocos Islands', 'COCO', 'West Island', 'Cocos Islands', 14, 596),
+('Cyprus', 'CY', 'Nicosia', 'Cyprus', 9251, 744609),
+('Gaza Strip', 'GAZA', NULL, NULL, 360, 813332),
+('Israel', 'IL', 'Jerusalem', 'Central', 20770, 5421995),
+('Egypt', 'ET', 'Cairo', 'El Qahira', 1.00145e+006, 63575107),
+('Indonesia', 'RI', 'Jakarta', 'Indonesia', 1.91944e+006, 206611600),
+('Timor-Leste', 'TL', 'Dili', 'Timor-Leste', 15007, 1131612),
+('Papua New Guinea', 'PNG', 'Port Moresby', 'Papua New Guinea', 461690, 4394537),
+('Iraq', 'IRQ', 'Baghdad', 'Baghdad', 437072, 21422292),
+('Jordan', 'JOR', 'Amman', 'Jordan', 89213, 4212152),
+('Kuwait', 'KWT', 'Kuwait', 'Kuwait', 17820, 1950047),
+('Saudi Arabia', 'SA', 'Riyadh', 'Saudi Arabia', 1.96058e+006, 19409058),
+('Syria', 'SYR', 'Damascus', 'Syria', 185180, 15608648),
+('Lebanon', 'RL', 'Beirut', 'Lebanon', 10400, 3776317),
+('West Bank', 'WEST', NULL, NULL, 5860, 1427741),
+('Japan', 'J', 'Tokyo', 'Tokyo', 377835, 125449703),
+('South Korea', 'ROK', 'Seoul', 'South Korea', 98480, 45482291),
+('Maldives', 'MV', 'Male', 'Maldives', 300, 270758),
+('Oman', 'OM', 'Muscat', 'Oman', 212460, 2186548),
+('United Arab Emirates', 'UAE', 'Abu Dhabi', 'Abu Dhabi', 75581, 3057337),
+('Yemen', 'YE', 'Sanaa', 'Yemen', 527970, 13483178),
+('Philippines', 'RP', 'Manila', 'Philippines', 299764, 74480848),
+('Qatar', 'Q', 'Doha', 'Qatar', 11000, 547761),
+('Singapore', 'SGP', 'Singapore', 'Singapore', 632.6, 3396924),
+('Sri Lanka', 'CL', 'Colombo', 'Sri Lanka', 65610, 18553074),
+('Taiwan', 'RC', 'Taipei', 'Taiwan', 36179, 21465881),
+('Anguilla', 'AXA', 'The Valley', 'Anguilla', 102, 14436),
+('Antigua and Barbuda', 'AG', 'Saint Johns', 'Antigua and Barbuda', 442, 65647),
+('Aruba', 'ARU', 'Oranjestad', 'Aruba', 193, 103065),
+('Bahamas', 'BS', 'Nassau', 'Bahamas', 13940, 259367),
+('Barbados', 'BDS', 'Bridgetown', 'Barbados', 430, 257030),
+('Belize', 'BZ', 'Belmopan', 'Belize', 22960, 219296),
+('Guatemala', 'GCA', 'Guatemala City', 'Guatemala', 108890, 11277614),
+('Mexico', 'MEX', 'Mexico City', 'Distrito Federal', 1.97255e+006, 95772462),
+('Bermuda', 'BERM', 'Hamilton', 'Bermuda', 53.3, 67837),
+('British Virgin Islands', 'BVIR', 'Road Town', 'British Virgin Islands', 153, 24491),
+('Canada', 'CDN', 'Ottawa', 'Ontario', 9.97614e+006, 28820671),
+('United States', 'USA', 'Washington', 'Distr. Columbia', 9.37261e+006, 266476278),
+('Cayman Islands', 'CAYM', 'George Town', 'Cayman Islands', 262, 49035),
+('Costa Rica', 'CR', 'San Jose', 'San Jose', 51100, 3463083),
+('Nicaragua', 'NIC', 'Managua', 'Nicaragua', 129494, 4272352),
+('Panama', 'PA', 'Panama City', 'Panama', 78200, 2655094),
+('Cuba', 'C', 'Havana', 'Ciudad de la Habana', 110860, 10951334),
+('Dominica', 'WD', 'Roseau', 'Dominica', 746, 82926),
+('Dominican Republic', 'DOM', 'Santo Domingo', 'Dominican Republic', 48730, 8088881),
+('Haiti', 'RH', 'Port-au-Prince', 'Haiti', 27750, 6731539),
+('El Salvador', 'ES', 'San Salvador', 'El Salvador', 21040, 5828987),
+('Honduras', 'HCA', 'Tegucigalpa', 'Francisco Morazan', 112090, 5605193),
+('Greenland', 'GROX', 'Nuuk', 'Greenland', 2.1756e+006, 58203),
+('Grenada', 'WG', 'Saint Georges', 'Grenada', 344, 94961),
+('Guadeloupe', 'GUAD', 'Basse-Terre', 'Guadeloupe', 1780, 407768),
+('Jamaica', 'JA', 'Kingston', 'Jamaica', 10991, 2595275),
+('Martinique', 'MART', 'Fort-de-France', 'Martinique', 1128, 399151),
+('Montserrat', 'MNTS', 'Plymouth', 'Montserrat', 102, 5097),
+('Netherlands Antilles', 'NA', 'Willemstad', 'Netherlands Antilles', 960, 227049),
+('Saint Martin', 'SMAR', 'Marigot', 'Saint Martin', 54, 29820),
+('Colombia', 'CO', 'Bogota', 'Santa Fe de Bogota, DC', 1.13891e+006, 36813161),
+('Puerto Rico', 'PR', 'San Juan', 'Puerto Rico', 8870, 3971020),
+('Saint Kitts and Nevis', 'KN', 'Basseterre', 'Saint Kitts and Nevis', 269, 41369),
+('Saint Lucia', 'WL', 'Castries', 'Saint Lucia', 620, 157862),
+('Saint Pierre and Miquelon', 'SPMI', 'Saint-Pierre', 'Saint Pierre and Miquelon', 242, 6809),
+('Saint Vincent and the Grenadines', 'WV', 'Kingstown', 'Saint Vincent and the Grenadines', 389, 118344),
+('Trinidad and Tobago', 'TT', 'Port-of-Spain', 'Trinidad and Tobago', 5130, 1272385),
+('Turks and Caicos Islands', 'TUCA', 'Grand Turk', 'Turks and Caicos Islands', 430, 22942),
+('Virgin Islands', 'VIRG', 'Charlotte Amalie', 'Virgin Islands', 352, 97120),
+('American Samoa', 'AMSA', 'Pago Pago', 'American Samoa', 199, 65628),
+('Australia', 'AUS', 'Canberra', 'Australia Capital Territory', 7.68685e+006, 18260863),
+('Cook Islands', 'COOK', 'Avarua', 'Cook Islands', 240, 11870),
+('Fiji', 'FJI', 'Suva', 'Fiji', 18270, 782381),
+('French Polynesia', 'FPOL', 'Papeete', 'French Polynesia', 4167, 287032),
+('Guam', 'GUAM', 'Agana', 'Guam', 541.3, 178430),
+('Kiribati', 'KIR', 'Tarawa', 'Kiribati', 717, 80919),
+('Marshall Islands', 'MH', 'Majuro', 'Marshall Islands', 181.3, 58363),
+('Micronesia', 'FSM', 'Palikir', 'Micronesia', 702, 125377),
+('Nauru', 'NAU', 'Yaren', 'Nauru', 21, 10273),
+('New Caledonia', 'NCA', 'Noumea', 'New Caledonia', 19060, 227436),
+('New Zealand', 'NZ', 'Wellington', 'New Zealand', 268680, 3547983),
+('Niue', 'NIUE', 'Alofi', 'Niue', 260, 1398),
+('Norfolk Island', 'NORF', 'Kingston', 'Norfolk Island', 34.6, 2209),
+('Northern Mariana Islands', 'NMIS', 'Saipan', 'Northern Mariana Islands', 477, 88662),
+('Palau', 'PAL', 'Melekeok', 'Palau', 458, 16952),
+('Pitcairn Islands', 'PITC', 'Adamstown', 'Pitcairn Islands', 47, 48),
+('Solomon Islands', 'SLB', 'Honiara', 'Solomon Islands', 28450, 412902),
+('Tonga', 'TO', 'Nukualofa', 'Tonga', 748, 106466),
+('Tuvalu', 'TUV', 'Funafuti', 'Tuvalu', 26, 10146),
+('Vanuatu', 'VU', 'Port-Vila', 'Vanuatu', 14760, 177504),
+('Wallis and Futuna', 'WAFU', 'Mata-Utu', 'Wallis and Futuna', 274, 15289),
+('Samoa', 'WS', 'Apia', 'Samoa', 2860, 214384),
+('Argentina', 'RA', 'Buenos Aires', 'Distrito Federal', 2.76689e+006, 34672997),
+('Bolivia', 'BOL', 'La Paz', 'Bolivia', 1.09858e+006, 7165257),
+('Brazil', 'BR', 'Brasilia', 'Distrito Federal', 8.51197e+006, 162661214),
+('Chile', 'RCH', 'Santiago', 'Chile', 756950, 14333258),
+('Paraguay', 'PY', 'Asuncion', 'Paraguay', 406750, 5504146),
+('Uruguay', 'ROU', 'Montevideo', 'Uruguay', 176220, 3238952),
+('Peru', 'PE', 'Lima', 'Lima', 1.28522e+006, 24523408),
+('French Guiana', 'FGU', 'Cayenne', 'French Guiana', 91000, 151187),
+('Guyana', 'GUY', 'Georgetown', 'Guyana', 214970, 712091),
+('Suriname', 'SME', 'Paramaribo', 'Suriname', 163270, 436418),
+('Venezuela', 'YV', 'Caracas', 'Distrito Federal', 912050, 21983188),
+('Ecuador', 'EC', 'Quito', 'Ecuador', 283560, 11466291),
+('Falkland Islands', 'FALK', 'Stanley', 'Falkland Islands', 12173, 3140),
+('Algeria', 'DZ', 'Algier', 'Algeria', 2.38174e+006, 29183032),
+('Libya', 'LAR', 'Tripoli', 'Libya', 1.75954e+006, 5445436),
+('Mali', 'RMM', 'Bamako', 'Mali', 1.24e+006, 9653261),
+('Mauritania', 'RIM', 'Nouakchott', 'Mauritania', 1.0307e+006, 2336048),
+('Morocco', 'MA', 'Rabat', 'Morocco', 446550, 29779156),
+('Niger', 'RN', 'Niamey', 'Niger', 1.267e+006, 9113001),
+('Tunisia', 'TN', 'Tunis', 'Tunisia', 163610, 9019687),
+('Western Sahara', 'WSA', 'El Aaiun', 'Western Sahara', 266000, 222631),
+('Angola', 'ANG', 'Luanda', 'Luanda', 1.2467e+006, 10342899),
+('Congo', 'RCB', 'Brazzaville', 'Congo', 342000, 2527841),
+('Namibia', 'NAM', 'Windhoek', 'Namibia', 825418, 1677243),
+('Zaire', 'ZRE', 'Kinshasa', 'Kinshasa', 2.34541e+006, 46498539),
+('Zambia', 'Z', 'Lusaka', 'Lusaka', 752610, 9159072),
+('Benin', 'BEN', 'Porto-Novo', 'Benin', 112620, 5709529),
+('Burkina Faso', 'BF', 'Ouagadougou', 'Burkina Faso', 274200, 10623323),
+('Nigeria', 'WAN', 'Abuja', 'Nigeria', 923770, 103912489),
+('Togo', 'RT', 'Lome', 'Togo', 56790, 4570530),
+('Botswana', 'RB', 'Gaborone', 'Botswana', 600370, 1477630),
+('South Africa', 'RSA', 'Pretoria', 'Gauteng', 1.21991e+006, 41743459),
+('Zimbabwe', 'ZW', 'Harare', 'Zimbabwe', 390580, 11271314),
+('Cote dIvoire', 'CI', 'Yamoussoukro', 'Cote dIvoire', 322460, 14762445),
+('Ghana', 'GH', 'Accra', 'Ghana', 238540, 17698271),
+('Burundi', 'BI', 'Bujumbura', 'Burundi', 27830, 5943057),
+('Rwanda', 'RWA', 'Kigali', 'Rwanda', 26340, 6853359),
+('Tanzania', 'EAT', 'Dar es Salaam', 'Daressalam', 945090, 29058470),
+('Cameroon', 'CAM', 'Yaounde', 'Centre', 475440, 14261557),
+('Central African Republic', 'RCA', 'Bangui', 'Central African Republic', 622980, 3274426),
+('Chad', 'TCH', 'NDjamena', 'Chad', 1.284e+006, 6976845),
+('Equatorial Guinea', 'GQ', 'Malabo', 'Equatorial Guinea', 28050, 431282),
+('Gabon', 'G', 'Libreville', 'Gabon', 267670, 1172798),
+('Cape Verde', 'CV', 'Praia', 'Cape Verde', 4030, 449066),
+('Sudan', 'SUD', 'Khartoum', 'al Khartum', 2.50581e+006, 31547543),
+('Comoros', 'COM', 'Moroni', 'Comoros', 2170, 569237),
+('Guinea', 'RG', 'Conakry', 'Guinea', 245860, 7411981),
+('Liberia', 'LB', 'Monrovia', 'Liberia', 111370, 2109789),
+('Djibouti', 'DJI', 'Djibouti', 'Djibouti', 22000, 427642),
+('Eritrea', 'ER', 'Asmara', 'Eritrea', 121320, 3427883),
+('Ethiopia', 'ETH', 'Addis Ababa', 'Ethiopia', 1.12713e+006, 57171662),
+('Somalia', 'SP', 'Mogadishu', 'Somalia', 637660, 9639151),
+('Kenya', 'EAK', 'Nairobi', 'Nairobi', 582650, 28176686),
+('Gambia', 'WAG', 'Banjul', 'Gambia', 11300, 1204984),
+('Senegal', 'SN', 'Dakar', 'Dakar', 196190, 9092749),
+('Guinea-Bissau', 'GNB', 'Bissau', 'Guinea-Bissau', 36120, 1151330),
+('Sierra Leone', 'WAL', 'Freetown', 'Sierra Leone', 71740, 4793121),
+('Uganda', 'EAU', 'Kampala', 'Uganda', 236040, 20158176),
+('Lesotho', 'LS', 'Maseru', 'Lesotho', 30350, 1970781),
+('Madagascar', 'RM', 'Antananarivo', 'Antananarivo', 587041, 13670507),
+('Malawi', 'MW', 'Lilongwe', 'Malawi', 118480, 9452844),
+('Mozambique', 'MOC', 'Maputo', 'Maputo (munic.)', 801590, 17877927),
+('Mauritius', 'MS', 'Port Louis', 'Mauritius', 2040, 1140256),
+('Mayotte', 'MAYO', 'Mamoutzou', 'Mayotte', 374, 223765),
+('Swaziland', 'SD', 'Mbabane', 'Swaziland', 17360, 998730),
+('Reunion', 'REUN', 'Saint-Denis', 'Reunion', 2510, 679198),
+('Saint Helena', 'HELX', 'Jamestown', 'Saint Helena', 413, 7637),
+('Sao Tome and Principe', 'STP', 'Sao Tome', 'Sao Tome and Principe', 1001, 144128),
+('Seychelles', 'SY', 'Victoria', 'Seychelles', 455, 77575);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `groupe`
+--
+
+CREATE TABLE IF NOT EXISTS `groupe` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `date_creation` datetime NOT NULL,
+  `autorisation_majeur` tinyint(1) NOT NULL,
+  `nombre_membres` int(11) NOT NULL,
+  `photo_principale` varchar(255) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Contenu de la table `groupe`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `groupe_membre`
+--
+
+CREATE TABLE IF NOT EXISTS `groupe_membre` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ID_membre` int(11) NOT NULL,
+  `ID_groupe` int(11) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Contenu de la table `groupe_membre`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `intern_email`
+--
+
+CREATE TABLE IF NOT EXISTS `intern_email` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `id_expediteur` int(11) NOT NULL,
+  `id_receveur` int(11) NOT NULL,
+  `titre` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `lu` int(1) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Contenu de la table `intern_email`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `invitation`
+--
+
+CREATE TABLE IF NOT EXISTS `invitation` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `message` text NOT NULL,
+  `reponse` varchar(10) NOT NULL,
+  `id_receveur` int(11) NOT NULL,
+  `id_group` int(11) NOT NULL,
+  `prenom_inviteur` varchar(255) NOT NULL,
+  `nom_inviteur` varchar(255) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Contenu de la table `invitation`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `membres`
+--
+
+CREATE TABLE IF NOT EXISTS `membres` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` text NOT NULL,
+  `name` text NOT NULL,
+  `town` varchar(255) NOT NULL,
+  `study` varchar(255) NOT NULL,
+  `job` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `validation` int(1) NOT NULL,
+  `date_inscription` datetime NOT NULL,
+  `country` varchar(255) NOT NULL,
+  `code_country` char(4) NOT NULL,
+  `date_birth` date NOT NULL,
+  `quotation` varchar(255) NOT NULL,
+  `movies` varchar(255) NOT NULL,
+  `books` varchar(255) NOT NULL,
+  `musics` varchar(255) NOT NULL,
+  `favorite_personality` varchar(255) NOT NULL,
+  `hobby` varchar(255) NOT NULL,
+  `pseudo` varchar(255) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Contenu de la table `membres`
+--
+

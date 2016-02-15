@@ -1,0 +1,122 @@
+body
+{
+   width: 775px;
+   margin: auto;
+   margin-top: 5px;
+   margin-bottom: 5px;  
+}
+
+#en_tete
+{
+	width: 775px;
+	height: 100px;
+	background-image: url("images/banniere3.png");
+	background-repeat: no-repeat;
+	margin-bottom: 10px;
+
+}
+
+#menu
+{
+   float: left;
+   width: 120px;
+   margin-bottom: 10px;
+}
+
+#menu_right
+{
+   float: right;
+   width: 120px;
+   margin-bottom: 10px;
+}
+
+#corps
+{
+   margin-left: 140px;
+   margin-bottom: 20px;
+}
+
+#pied_de_page
+{
+   text-align: center;
+   margin-top: 230px;
+   color: white;
+   background-color: rgb(117,0,0);
+   
+}
+
+ul#menu_horizontale 
+{  
+	list-style-type : none; /* Car sinon les puces se placent n'importe où */
+}
+
+ul#menu_horizontale li 
+{
+	display : inline; /*Pour mettre les puces en lignes et non en colonnes*/
+}
+
+a
+{
+	text-decoration: none;
+	color: rgb(117,0,0);
+}
+
+a:hover
+{
+	text-decoration: underline;
+}
+
+a:visited
+{
+	color: black;
+}
+
+.autor
+{
+	color: white;
+}
+
+ul
+{
+	color: rgb(117,0,0);
+}
+
+.description
+{
+	background-color: rgb(216,216,216);
+}
+
+label
+{
+	color: black;
+}
+
+.auteur_titre_non_lu
+{
+	background-color: rgb(255,110,110);
+}
+
+.titre_non_lu
+{
+	background-color: rgb(255,150,150);
+}
+
+.auteur_titre_lu
+{
+	background-color: rgb(255,180,180);
+}
+
+.titre_lu
+{
+	background-color: rgb(255,204,204);
+}
+
+.auteur_agora
+{
+	background-color: rgb(173,199,186);
+}
+
+.message_agora
+{
+	background-color: rgb(196,255,218);
+}
